@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/firstFragment">
+
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.barisemrealanc.travelplanner.HomeFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.barisemrealanc.travelplanner.ExploreFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.barisemrealanc.travelplanner.PlanFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_plan" />
+    <fragment
+        android:id="@+id/fourthFragment"
+        android:name="com.barisemrealanc.travelplanner.SavedFragment"
+        android:label="fragment_fourth"
+        tools:layout="@layout/fragment_saved" />
+    <fragment
+        android:id="@+id/fifthFragment"
+        android:name="com.barisemrealanc.travelplanner.ProfileFragment"
+        android:label="fragment_fifth"
+        tools:layout="@layout/fragment_profile" />
+
+
+
+</navigation>
