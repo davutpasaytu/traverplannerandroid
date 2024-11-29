@@ -5,7 +5,7 @@
     xmlns:tools2="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.explore.ExploreFragment">
+    tools:context=".ui.explore.com.barisemrealanc.travelplanner.ExploreFragment">
 
     <!-- Popular Destinations Title -->
     <TextView
@@ -22,17 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools2:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="14dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/popularDestinationsTitle" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -50,14 +40,7 @@
         
         
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="64dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="17dp"
-        app:layout_constraintStart_toEndOf="@+id/popularDestinationsTitle"
-        app:layout_constraintTop_toBottomOf="@+id/popularDestinationsTitle"
-        app:srcCompat="@drawable/circular_button_bg" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
