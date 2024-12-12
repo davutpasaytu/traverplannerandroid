@@ -1,31 +1,33 @@
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.barisemrealanc.travelplanner.R
+import com.barisemrealanc.travelplanner.databinding.ItemDestinationBinding
 
-class NewsAdapter(private val newsList: List<NewsItem>) :
-    RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+data class Destination(
+    val title: String,
+    val location: String,
+    val imageRes: Int
+)
 
-    class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTitle: TextView = view.findViewById(R.id.tvTitle1)
-        val tvPreview: TextView = view.findViewById(R.id.tvDescription1)
+class DestinationAdapter(private val destinations: List<Destination>) :
+    RecyclerView.Adapter<DestinationAdapter.DestinationViewHolder>() {
+
+    inner class DestinationViewHolder(val binding: ItemDestinationBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolder {
+        val binding = ItemDestinationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return DestinationViewHolder(binding)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_card, parent, false)
-        return NewsViewHolder(view)
+    override fun onBindViewHolder(holder: DestinationViewHolder, position: Int) {
+        val destination = destinations[position]
+        holder.binding.apply {
+            txtTitle.text = destination.title
+            txtLocation.text = destination.location
+            imgDestination.setImageResource(destination.imageRes)
+        }
     }
 
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val item = newsList[position]
-        holder.tvTitle.text = item.title
-        holder.tvPreview.text = item.preview
-    }
-
-    override fun getItemCount(): Int = newsList.size
+    override fun getItemCount(): Int = destinations.size
 }
-
-data class NewsItem(val title: String, val preview: String)

@@ -1,38 +1,45 @@
 package com.barisemrealanc.travelplanner
 
-import NewsAdapter
-import NewsItem
+import Destination
+import DestinationAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.barisemrealanc.travelplanner.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // XML'i bağla
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Haber verileri
-        val newsList = listOf(
-            NewsItem("Haber 1", "Bu bir önizleme yazısıdır."),
-            NewsItem("Haber 2", "İkinci haberin önizleme yazısı."),
-            NewsItem("Haber 3", "Üçüncü haberin açıklaması."),
-            NewsItem("Haber 4", "Dördüncü haberin detayları."),
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // RecyclerView setup
+        val destinations = listOf(
+            Destination("Niladri Reservoir", "Tekergat, Sunamganj", R.drawable.app_logo),
+            Destination("Darma Valley", "Pithoragarh, India", R.drawable.app_logo),
+            Destination("Swiss Alps", "Switzerland", R.drawable.app_logo)
         )
 
-        // RecyclerView'i ayarla
-        val rvNews = view.findViewById<RecyclerView>(R.id.rvNews)
-        rvNews.layoutManager = GridLayoutManager(requireContext(), 1) // 2 sütun
-        rvNews.adapter = NewsAdapter(newsList)
+        val adapter = DestinationAdapter(destinations)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView.adapter = adapter
+    }
 
-        return view
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

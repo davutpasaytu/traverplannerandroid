@@ -42,11 +42,10 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val transaction = supportFragmentManager.beginTransaction()
-        val homeFragment = HomeFragment()  // HomeFragment'ı burada oluşturuyoruz
-        transaction.replace(R.id.firstFragment, homeFragment)  // fragment_container container view ID'si
-        transaction.addToBackStack(null)  // Eğer geri tuşu ile fragment'ı geri almak istiyorsanız
-        transaction.commit()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish() // IntroActivity'yi geri tuşundan kaldırmak için
     }
+
 
 }
