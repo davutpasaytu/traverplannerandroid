@@ -1,177 +1,135 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="20dp">
 
-    <!-- Profil ve Başlık Alanı -->
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Leonardo"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/imgProfile"
-        app:layout_constraintStart_toEndOf="@id/imgProfile"
-        app:layout_constraintTop_toTopOf="@id/imgProfile"
-        app:layout_constraintVertical_bias="0.75" />
-
-    <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/ic_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Başlık -->
-
-    <!-- Yuvarlak Butonlar -->
-    <ImageView
-        android:id="@+id/imgNotification"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="360dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="44dp"
-        android:text="Explore the Beautiful world!"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtBestDestinations" />
-
-    <TextView
-        android:id="@+id/txtBestDestinations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Best Destination"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnContainer" />
-
+    <!-- Search Box with Filters -->
     <LinearLayout
-        android:id="@+id/btnContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtTitle">
+        android:background="@color/olive_200"
+        android:padding="8dp"
+        android:gravity="center_vertical">
 
-        <!-- 4 adet yuvarlak buton -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/teal_700"
-            app:cardCornerRadius="32dp">
+        <!-- Search Icon -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="Search Icon" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="A"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
+        <!-- Search EditText -->
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Select Destination"
+            android:paddingStart="8dp"
+            android:background="@null"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="16sp" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/teal_700"
-            app:cardCornerRadius="32dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="A"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/teal_700"
-            app:cardCornerRadius="32dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="A"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/teal_700"
-            app:cardCornerRadius="32dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="A"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
-
-        <!-- Diğer butonlar (aynı yapı tekrarlanır) -->
-        <!-- CardView: 3 tane daha ekleyebilirsiniz. -->
+        <!-- Filter Icon -->
+        <ImageView
+            android:id="@+id/filterIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/filter"
+            android:contentDescription="Filter Icon" />
     </LinearLayout>
 
-    <!-- "Best Destination" ve "View All" -->
-
-    <TextView
-        android:id="@+id/txtViewAll"
-        android:layout_width="wrap_content"
+    <!-- Scrollable Filter Buttons -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View All"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txtBestDestinations" />
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
 
-    <!-- Yatay RecyclerView -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Nearby Button -->
+            <Button
+                android:id="@+id/buttonNearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Nearby"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/nearby"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Among Trees Button -->
+            <Button
+                android:id="@+id/buttonAmongTrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Among Trees"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/trees"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Epic Views Button -->
+            <Button
+                android:id="@+id/buttonEpicViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Epic Views"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/epicviews"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Top Picks Button -->
+            <Button
+                android:id="@+id/buttonTopPicks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Top Picks"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/trees"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Hidden Gems Button -->
+            <Button
+                android:id="@+id/buttonHiddenGems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Hidden Gems"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/trees"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for Parks -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewParks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</LinearLayout>

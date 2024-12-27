@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Kaydırılabilir Resim -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImages"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:padding="8dp" />
+
+    <!-- Sağ üstte Kaydet İkonu -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="-200dp">
+
+        <ImageButton
+            android:id="@+id/buttonSave"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:src="@drawable/ic_save" />
+    </FrameLayout>
+
+    <!-- Park İsmi -->
+    <TextView
+        android:id="@+id/textViewParkName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ragged Mountain Blue and Red Blazed Loop"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Lokasyon -->
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Berlin, Connecticut"
+        android:textSize="14sp"
+        android:textColor="#808080" />
+
+    <!-- Ekstra Bilgiler (Yatay Düzen) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/textViewRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="★ 4.6"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/textViewDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moderate"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/textViewDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9.01 km"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/textViewEstimatedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Est. 2h 28m" />
+    </LinearLayout>
+</LinearLayout>

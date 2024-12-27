@@ -1,46 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android/tools"
-    xmlns:tools2="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.explore.com.barisemrealanc.travelplanner.ExploreFragment">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Popular Destinations Title -->
-    <TextView
-        android:id="@+id/popularDestinationsTitle"
-        android:layout_width="wrap_content"
+    <!-- Üst Menü: Başlık ve Bildirim Simgesi -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="EXPLORE"
-        android:textColor="@color/black"
-        android:textSize="25sp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Başlık -->
+        <TextView
+            android:id="@+id/exploreTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Explore"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!-- Bildirim Simgesi -->
+        <ImageView
+            android:id="@+id/notificationIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_save"
+            android:contentDescription="Notification Icon" />
+    </LinearLayout>
+
+    <!-- Sekmeler: Local ve Following -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutExplore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@android:color/black"
+        app:tabSelectedTextColor="@android:color/black"
+        app:tabTextColor="@android:color/darker_gray"
+        android:layout_marginTop="8dp">
+        <!-- Sekme başlıkları dinamik olarak eklenecek -->
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Latest Nearby Text -->
+    <TextView
+        android:id="@+id/latestNearbyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Latest nearby"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools2:ignore="MissingConstraints" />
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp" />
 
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <!-- Arama Kutusu -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="148dp"
-        android:text="ExploreTryout"
-        android:textColor="@color/purple_700"
-        android:textSize="30sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:background="@drawable/search_background"
+        android:padding="8dp"
+        android:layout_marginTop="8dp">
 
-        
-        
+        <!-- Arama Simgesi -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="Search Icon" />
 
+        <!-- Arama EditText -->
+        <EditText
+            android:id="@+id/searchBoxExplore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Explore by destination"
+            android:paddingStart="8dp"
+            android:background="@null"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="16sp" />
+    </LinearLayout>
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView (Gönderiler için) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewExplore"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</LinearLayout>
