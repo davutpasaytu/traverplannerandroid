@@ -59,21 +59,27 @@ class IntroActivity : AppCompatActivity() {
             if (binding.viewPager.currentItem + 1 < introPages.size) {
                 binding.viewPager.currentItem += 1
             } else {
-                navigateToHome()
+                navigateToNextScreen()
             }
         }
 
         // "Skip" butonu
         binding.btnSkip.setOnClickListener {
-            navigateToHome()
+            navigateToNextScreen()
         }
     }
 
-    private fun navigateToHome() {
-        val intent = Intent(this, MainActivity::class.java)
+    private fun navigateToNextScreen() {
+        val isLoggedIn = false // Login durumunu kontrol et
+        val intent = if (isLoggedIn) {
+            Intent(this, MainActivity::class.java)
+        } else {
+            Intent(this, LoginActivity::class.java)
+        }
         startActivity(intent)
-        finish() // IntroActivity'yi geri tuşundan kaldırmak için
+        finish()
     }
+
 
     // Dinamik sayfa göstergesi (dots indicator) kurulum
     private fun setupPageIndicator(pageCount: Int) {

@@ -1,9 +1,12 @@
+package com.barisemrealanc.travelplanner
+
+import ExplorePost
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.barisemrealanc.travelplanner.databinding.ItemExplorePostBinding
 
-class ExploreAdapter(private var posts: List<ExplorePost>) :
+class ExploreAdapter(private val posts: List<ExplorePost>) :
     RecyclerView.Adapter<ExploreAdapter.ExploreViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder {
@@ -17,14 +20,8 @@ class ExploreAdapter(private var posts: List<ExplorePost>) :
 
     override fun getItemCount(): Int = posts.size
 
-    fun updatePosts(newPosts: List<ExplorePost>) {
-        posts = newPosts
-        notifyDataSetChanged() // RecyclerView güncelleniyor
-    }
-
     inner class ExploreViewHolder(private val binding: ItemExplorePostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(post: ExplorePost) {
             binding.profileName.text = post.profileName
             binding.postDate.text = post.postDate

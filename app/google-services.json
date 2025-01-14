@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "643736512119",
+    "project_id": "travelplannerbackend",
+    "storage_bucket": "travelplannerbackend.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643736512119:android:27eca1414c11a24e058872",
+        "android_client_info": {
+          "package_name": "com.barisemrealanc.travelplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3sbNtbPFVM5wObHg--dpUon_2ObwuovA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
