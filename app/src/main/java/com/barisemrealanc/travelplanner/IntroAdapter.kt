@@ -1,24 +1,19 @@
-package com.barisemrealanc.travelplanner
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.barisemrealanc.travelplanner.databinding.ItemIntroBinding
+import com.barisemrealanc.travelplanner.IntroPage
+import com.barisemrealanc.travelplanner.databinding.ItemIntroPageBinding
 
 class IntroAdapter(private val pages: List<IntroPage>) :
     RecyclerView.Adapter<IntroAdapter.IntroViewHolder>() {
 
-    inner class IntroViewHolder(private val binding: ItemIntroBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(page: IntroPage) {
-            binding.title.text = page.title
-            binding.description.text = page.description
-            binding.image.setImageResource(page.imageRes)
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IntroViewHolder {
-        val binding = ItemIntroBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        // Binding sınıfını kullanarak layout'u bağlayın
+        val binding = ItemIntroPageBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return IntroViewHolder(binding)
     }
 
@@ -26,5 +21,17 @@ class IntroAdapter(private val pages: List<IntroPage>) :
         holder.bind(pages[position])
     }
 
-    override fun getItemCount() = pages.size
+    override fun getItemCount(): Int = pages.size
+
+    inner class IntroViewHolder(private val binding: ItemIntroPageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(page: IntroPage) {
+            binding.introImage.setImageResource(page.imageRes)
+            binding.introTitle.text = page.title
+            binding.introDescription.text = page.description
+
+            binding.root.setBackgroundColor(page.backgroundColor)
+        }
+    }
 }

@@ -1,140 +1,135 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="20dp">
 
-    <!-- Üst kısım: Arama çubuğu -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:queryHint="Find parks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Butonlar: Nearby, Among trees, Epic views -->
+    <!-- Search Box with Filters -->
     <LinearLayout
-        android:id="@+id/buttonsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/searchView">
+        android:background="@color/olive_200"
+        android:padding="8dp"
+        android:gravity="center_vertical">
 
-        <Button
-            android:id="@+id/btnNearby"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:text="Nearby" />
+        <!-- Search Icon -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="Search Icon" />
 
-        <Button
-            android:id="@+id/btnAmongTrees"
-            android:layout_width="wrap_content"
+        <!-- Search EditText -->
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:text="Among trees" />
+            android:layout_weight="1"
+            android:hint="Select Destination"
+            android:paddingStart="8dp"
+            android:background="@null"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/btnEpicViews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:text="Epic views" />
+        <!-- Filter Icon -->
+        <ImageView
+            android:id="@+id/filterIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/filter"
+            android:contentDescription="Filter Icon" />
     </LinearLayout>
 
-    <!-- Büyük görsel -->
-    <ImageView
-        android:id="@+id/parkImage"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/app_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonsContainer" />
-
-    <!-- Başlık, Mesafe, Zorluk -->
-    <TextView
-        android:id="@+id/parkTitle"
-        android:layout_width="wrap_content"
+    <!-- Scrollable Filter Buttons -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Ragged Mountain Blue and Red Blazed Loop"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parkImage" />
+        android:scrollbars="none">
 
-    <TextView
-        android:id="@+id/parkDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="4.6, Moderate, 9.01 km, Est. 2h 28m"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parkTitle" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <!-- Map Button -->
-    <Button
-        android:id="@+id/btnMap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="Map"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parkDetails" />
+            <!-- Nearby Button -->
+            <Button
+                android:id="@+id/buttonNearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Nearby"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/nearby"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
 
-    <!-- Tab Bar (Alt Kısım) -->
-    <LinearLayout
-        android:id="@+id/tabBar"
+            <!-- Among Trees Button -->
+            <Button
+                android:id="@+id/buttonAmongTrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Among Trees"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/trees"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Epic Views Button -->
+            <Button
+                android:id="@+id/buttonEpicViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Epic Views"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/epicviews"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Top Picks Button -->
+            <Button
+                android:id="@+id/buttonTopPicks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Top Picks"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/trees"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Hidden Gems Button -->
+            <Button
+                android:id="@+id/buttonHiddenGems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Hidden Gems"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/trees"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for Parks -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewParks"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <Button
-            android:id="@+id/btnExplore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Explore" />
-
-        <Button
-            android:id="@+id/btnCommunity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Community" />
-
-        <Button
-            android:id="@+id/btnNavigate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Navigate" />
-
-        <Button
-            android:id="@+id/btnSaved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Saved" />
-
-        <Button
-            android:id="@+id/btnProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Profile" />
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</LinearLayout>

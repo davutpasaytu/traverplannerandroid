@@ -36,8 +36,6 @@ android {
     }
     buildFeatures {
         compose = true
-    }
-    buildFeatures {
         viewBinding = true
     }
 }
@@ -59,6 +57,11 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.play.services.maps)
+
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth:22.0.1")
+    implementation(libs.firebase.auth.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,3 +70,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+
+// Google Services Plugin
+apply(plugin = "com.google.gms.google-services")
