@@ -1,7 +1,6 @@
 package com.barisemrealanc.travelplanner
 
-import Destination
-import DestinationAdapter
+import ParkAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,16 +25,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // RecyclerView setup
-        val destinations = listOf(
-            Destination("Niladri Reservoir", "Tekergat, Sunamganj", R.drawable.app_logo),
-            Destination("Darma Valley", "Pithoragarh, India", R.drawable.app_logo),
-            Destination("Swiss Alps", "Switzerland", R.drawable.app_logo)
-        )
+        // Örnek veri listesi
+        val parkList = listOf("Central Park", "Golden Gate Park", "Hyde Park", "Stanley Park")
 
-        val adapter = DestinationAdapter(destinations)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerView.adapter = adapter
+        // RecyclerView düzeni ve adaptörü
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView.adapter = ParkAdapter(parkList)
     }
 
     override fun onDestroyView() {
