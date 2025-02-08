@@ -57,10 +57,15 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.play.services.maps)
+    implementation("com.github.bumptech.glide:glide:4.15.1")
 
     // Firebase Authentication
     implementation("com.google.firebase:firebase-auth:22.0.1")
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.storage.ktx)
+    implementation(libs.material)
+    implementation(libs.car.ui.lib)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

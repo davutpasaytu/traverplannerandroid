@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.barisemrealanc.travelplanner.data.network.RetrofitInstance
 import com.barisemrealanc.travelplanner.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -27,45 +30,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val parks = listOf(
-            ParkItem(
-                name = "Ragged Mountain Blue and Red Blazed Loop",
-                location = "Berlin, Connecticut",
-                rating = 4.6,
-                difficulty = "Moderate",
-                distance = "9.01 km",
-                estimatedTime = "Est. 2h 28m",
-                imageList = listOf(R.drawable.image3, R.drawable.image4)
-            ),
-            ParkItem(
-                name = "Another Trail Name",
-                location = "Another Location",
-                rating = 4.3,
-                difficulty = "Easy",
-                distance = "5.6 km",
-                estimatedTime = "Est. 1h 45m",
-                imageList = listOf(R.drawable.image3, R.drawable.image4)
-            ),
-            ParkItem(
-                name = "Baris Secret Place",
-                location = "Ameriga",
-                rating = 5.0,
-                difficulty = "hard",
-                distance = "40000km",
-                estimatedTime = "Est. 15h",
-                imageList = listOf(R.drawable.image4, R.drawable.image3)
-            )
-
-        )
-
-        val adapter = ParkAdapter.ParkAdapter(parks, onSaveClick = { park ->
+        // RecyclerView için başlangıçta boş bir listeyle adapter'ı başlatıyoruz
+        val adapter = ParkAdapter(emptyList(), onSaveClick = { park ->
             println("${park.name} saved!")
         }, onDetailsClick = { park ->
             println("Navigating to details for ${park.name}")
         })
 
+        // RecyclerView'ı ve adapter'ı bağlıyoruz
         binding.recyclerViewParks.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewParks.adapter = adapter
+
+        // Retrofit ile veriyi çekiyoruz
+        lifecycleScope.launch {
+            try {
+                // API'den veri çekme
+                val places = RetrofitInstance.api.getPlaces()
+                // Adapter'ı güncelliyoruz
+                adapter.updatePlaces(places)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // Hata durumunda kullanıcıya bir mesaj gösterebilirsiniz
+            }
+        }
     }
 
     override fun onDestroyView() {

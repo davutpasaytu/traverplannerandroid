@@ -30,7 +30,7 @@
         android:id="@+id/fifthFragment"
         android:name="com.barisemrealanc.travelplanner.ProfileFragment"
         android:label="fragment_fifth"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/activity_profile" />
 
 
 
