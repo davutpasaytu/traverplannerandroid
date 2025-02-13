@@ -20,6 +20,7 @@ firebaseDatabaseKtx = "21.0.0"
 firebaseStorageKtx = "21.0.1"
 material = "1.12.0"
 carUiLib = "2.6.0"
+playServicesLocation = "21.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +50,8 @@ firebase-database-ktx = { group = "com.google.firebase", name = "firebase-databa
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 car-ui-lib = { group = "com.android.car.ui", name = "car-ui-lib", version.ref = "carUiLib" }
+google-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
+google-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 
 
 [plugins]

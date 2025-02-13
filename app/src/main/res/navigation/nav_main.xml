@@ -16,11 +16,11 @@
         android:name="com.barisemrealanc.travelplanner.ExploreFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_explore" />
-    <fragment
+    <activity
         android:id="@+id/thirdFragment"
-        android:name="com.barisemrealanc.travelplanner.PlanFragment"
+        android:name="com.barisemrealanc.travelplanner.MapsActivity"
         android:label="fragment_third"
-        tools:layout="@layout/fragment_plan" />
+        tools:layout="@layout/activity_maps" />
     <fragment
         android:id="@+id/fourthFragment"
         android:name="com.barisemrealanc.travelplanner.SavedFragment"
@@ -30,7 +30,7 @@
         android:id="@+id/fifthFragment"
         android:name="com.barisemrealanc.travelplanner.ProfileFragment"
         android:label="fragment_fifth"
-        tools:layout="@layout/activity_profile" />
+        tools:layout="@layout/fragment_profile" />
 
 
 
